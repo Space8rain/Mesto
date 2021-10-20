@@ -1,7 +1,7 @@
 # Проект: Место
 
 ## Данный проект является проектной работой курса ЯПрактикум "Базовый JavaScript и работа с браузером."
-[GH-Pages - Russian Travel](https://space8rain.github.io/Mesto/)
+[GH-Pages - Mesto](https://space8rain.github.io/Mesto/)
 
 ### Цель проекта изучить и закрепить на практике основы работы с DOM.
 
