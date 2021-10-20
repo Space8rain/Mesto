@@ -1,0 +1,9 @@
+.card {
+  justify-self: center;
+  /* max-width: 282px;
+  max-height: 361px; */
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: 0;
+  background-color: #FFF;
+}

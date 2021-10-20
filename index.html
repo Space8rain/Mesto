@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Mesto</title>
+</head>
+
+<body class="root">
+  <div class="page">
+
+    <header class="header">
+      <img class="header__logo" src="./images/header_logo.png" alt="лого Mesto Russia">
+    </header>
+
+    <main>
+      <section class="profile">
+        <div class="profile__container">
+          <div class="profile__avatar"></div>
+          <div class="profile__info">
+            <div class="profile__wrap">
+              <h1 class="profile__name">Конюхов Фёдор</h1>
+              <button class="profile__btn-edit button" type="button"></button>
+            </div>
+            <p class="profile__activity">Путешественник, исследователь</p>
+          </div>
+        </div>
+        <button class="button button_add-card" type="button"></button>
+      </section>
+
+      <section class="cards">
+        <article class="card">
+          <img src="./images/card_image_1.jpg" alt="" class="card__image">
+          <div class="card__banner">
+            <h2 class="card__title">Тихий океан</h2>
+            <button class="card__like button" type="button"></button>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="./images/card_image_2.jpg" alt="" class="card__image">
+          <div class="card__banner">
+            <h2 class="card__title">Северный полюс</h2>
+            <button class="card__like button" type="button"></button>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="./images/card_image_3.jpg" alt="" class="card__image">
+          <div class="card__banner">
+            <h2 class="card__title">Эльбрус</h2>
+            <button class="card__like button" type="button"></button>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="./images/card_image_4.jpg" alt="" class="card__image">
+          <div class="card__banner">
+            <h2 class="card__title">Килиманджаро</h2>
+            <button class="card__like button" type="button"></button>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="./images/card_image_5.jpg" alt="" class="card__image">
+          <div class="card__banner">
+            <h2 class="card__title">Новая Зеландия</h2>
+            <button class="card__like button" type="button"></button>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="./images/card_image_6.jpg" alt="" class="card__image">
+          <div class="card__banner">
+            <h2 class="card__title">Атлантический океан</h2>
+            <button class="card__like button" type="button"></button>
+          </div>
+        </article>
+
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+    </footer>
+
+    <section class="popup">
+      <div class="popup__container">
+        <button class="popup__btn-close button"></button>
+        <div class="popup__content">
+          <h3 class="popup__title">Редактировать профиль</h3>
+          <form class="form">
+            <input type="text" class="popup__input" name="profilename" id="newName" placeholder="Имя">
+            <input type="text" class="popup__input" name="profileactivity" id="newActivity" placeholder="Деятельность">
+            <button type="submit" class="popup__btn-save button">Сохранить</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <script src="./scripts/index.js"></script>
+  </div>
+</body>
