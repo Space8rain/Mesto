@@ -4,12 +4,6 @@ const popupCloseButtonElement = popupElement.querySelector('.popup__btn-close');
 const profileInfo = document.querySelector('.profile__info');
 const popupSaveInfo = popupElement.querySelector('.popup__btn-save');
 
-const closePopupByClickOverlay = function (event) {
-  if (event.target === event.currentTarget) {
-    closePopup();
-  }
-};
-
 const openPopup = function () {
   popupElement.querySelector('#newName').value = profileInfo.querySelector('.profile__name').textContent;
   popupElement.querySelector('#newActivity').value = profileInfo.querySelector('.profile__activity').textContent;
@@ -20,7 +14,7 @@ const closePopup = function () {
   popupElement.classList.remove('popup_is-opened');
 };
 
-const editProfile = function () {
+const editProfile = function (event) {
   event.preventDefault();
   profileInfo.querySelector('.profile__name').textContent = popupElement.querySelector('#newName').value;
   profileInfo.querySelector('.profile__activity').textContent = popupElement.querySelector('#newActivity').value;
@@ -39,5 +33,4 @@ const editProfile = function () {
 
 popupOpenButtonElement.addEventListener ('click', openPopup);
 popupCloseButtonElement.addEventListener ('click', closePopup);
-popupElement.addEventListener ('click', closePopupByClickOverlay);
 popupSaveInfo.addEventListener ('click', editProfile);

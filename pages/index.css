@@ -24,7 +24,7 @@
 
 /* Button */
 
-@import url(../blocks/button/_add-card/button_add-card.css);
+@import url(../blocks/button/_type_add/button_type_add.css);
 
 /* Cards */
 
@@ -34,6 +34,7 @@
 @import url(../blocks/card/__banner/card__banner.css);
 @import url(../blocks/card/__title/card__title.css);
 @import url(../blocks/card/__like/card__like.css);
+@import url(../blocks/card/__like/_active/card__like_active.css);
 
 /* Footer */
 

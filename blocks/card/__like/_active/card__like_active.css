@@ -1,0 +1,7 @@
+.card__like_active {
+  background-image: url(../../../../images/btn_like_active.png);
+  background-position: center;
+  width: 22px;
+  height: 19px;
+  border: none;
+}

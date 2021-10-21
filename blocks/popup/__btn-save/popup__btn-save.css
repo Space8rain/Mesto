@@ -1,7 +1,7 @@
 .popup__btn-save {
   border-radius: 2px;
   overflow: hidden;
-  margin: 50px 0 30px;
+  margin: 48px 0 37px;
   background-color: #000;
   color: #FFF;
   font-family: 'Inter', 'Arial', 'sans-serif';
@@ -16,5 +16,7 @@
 @media (max-width: 767px) {
   .popup__btn-save {
     margin: 45px 0 25px;
+    font-size: 14px;
+    line-height: 17px;
   }
 }
