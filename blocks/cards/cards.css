@@ -13,14 +13,14 @@
 
 @media (max-width: 1023px) {
   .cards {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
     column-gap: 10px;
     padding: 36px 0 48px;
   }
 }
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
   .cards {
     grid-template-columns: repeat(1, 1fr);
   }
-}
+} */

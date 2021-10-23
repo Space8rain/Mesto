@@ -6,3 +6,9 @@
   height: 19px;
   border: none;
 }
+
+.card__like:hover {
+  cursor: pointer;
+  opacity: .5;
+  transition: .4s;
+}
