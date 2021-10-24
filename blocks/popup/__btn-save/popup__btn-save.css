@@ -1,5 +1,6 @@
 .popup__btn-save {
   border-radius: 2px;
+  border: none;
   margin: 48px 0 37px;
   background-color: #000;
   color: #FFF;
@@ -10,12 +11,12 @@
   line-height: 22px;
   text-align: center;
   height: 50px;
+  transition: .4s;
 }
 
 .popup__btn-save:hover {
   cursor: pointer;
   opacity: .8;
-  transition: .4s;
 }
 
 @media (max-width: 767px) {

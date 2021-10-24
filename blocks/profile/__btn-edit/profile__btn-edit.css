@@ -6,3 +6,10 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+@media (max-width: 910px) {
+  .profile__btn-edit {
+    width: 18px;
+    height: 18px;
+  }
+}
