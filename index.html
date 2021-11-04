@@ -31,73 +31,59 @@
       </section>
 
       <section class="cards">
-        <article class="card">
-          <img src="./images/card_image_1.jpg" alt="Фёдор в лодке в Тихом океане" class="card__image">
-          <div class="card__banner">
-            <h2 class="card__title">Тихий океан</h2>
-            <button class="card__like" type="button" aria-label="кнопка лайк"></button>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="./images/card_image_2.jpg" alt="Фёдор рисует картину на северном полюсе" class="card__image">
-          <div class="card__banner">
-            <h2 class="card__title">Северный полюс</h2>
-            <button class="card__like" type="button" aria-label="кнопка лайк"></button>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="./images/card_image_3.jpg" alt="Фёдор на горе Эльбрус" class="card__image">
-          <div class="card__banner">
-            <h2 class="card__title">Эльбрус</h2>
-            <button class="card__like" type="button" aria-label="кнопка лайк"></button>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="./images/card_image_4.jpg" alt="Фёдор на Килиманджаро" class="card__image">
-          <div class="card__banner">
-            <h2 class="card__title">Килиманджаро</h2>
-            <button class="card__like" type="button" aria-label="кнопка лайк"></button>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="./images/card_image_5.jpg" alt="Фёдор в Новой Зеландии" class="card__image">
-          <div class="card__banner">
-            <h2 class="card__title">Новая Зеландия</h2>
-            <button class="card__like" type="button" aria-label="кнопка лайк"></button>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="./images/card_image_6.jpg" alt="Фёдор в Атлантическом океане" class="card__image">
-          <div class="card__banner">
-            <h2 class="card__title">Атлантический океан</h2>
-            <button class="card__like" type="button" aria-label="кнопка лайк"></button>
-          </div>
-        </article>
-
       </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
 
-    <div class="popup">
+    <div class="popup popup_type_profile">
       <div class="popup__container">
-        <button type="button" class="popup__btn-close button" aria-label="кнопка закрытия всплывающего окна"></button>
+        <button type="button" class="popup__btn-close popup__btn-close_type_profile button" aria-label="кнопка закрытия всплывающего окна"></button>
         <div class="popup__content">
           <h3 class="popup__title">Редактировать профиль</h3>
-          <form class="form" name="form">
+          <form class="form form_type_profile" name="form">
             <input type="text" class="popup__input" name="profilename" id="newName" placeholder="Имя">
             <input type="text" class="popup__input" name="profileactivity" id="newActivity" placeholder="Деятельность">
-            <button type="submit" class="popup__btn-save">Сохранить</button>
+            <button type="submit" class="popup__btn-save popup__btn-save_type_profile" aria-label="кнопка сохранения новых данных">Сохранить</button>
           </form>
         </div>
       </div>
     </div>
+
+    <div class="popup popup_type_card">
+      <div class="popup__container">
+        <button type="button" class="popup__btn-close popup__btn-close_type_card button" aria-label="кнопка закрытия всплывающего окна"></button>
+        <div class="popup__content">
+          <h3 class="popup__title">Новое место</h3>
+          <form class="form form_type-card" name="form">
+            <input type="text" class="popup__input" name="placename" id="placename" placeholder="Название">
+            <input type="text" class="popup__input" name="imglink" id="imglink" placeholder="Ссылка на картинку">
+            <button type="submit" class="popup__btn-save popup__btn-save_type_card" aria-label="кнопка сохранения новой карточки">Создать</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+	<div class="popup popup_type_fullscreen">
+		<figure class="popup__full-image">
+      <button type="button" class="popup__btn-close button popup__btn-close_type_full-image" aria-label="Кнопка закрытия картинки"></button>
+			<img class="popup__photo" src="#" alt="Увеличенная фотография">
+			<figcaption class="popup__caption"></figcaption>
+		</figure>
+	</div>
+
+    <template id="user-card">
+      <article class="card">
+        <button class="card__delete button" type="button" aria-label="кнопка удаления"></button>
+        <img src="#" alt="" class="card__image">
+        <div class="card__banner">
+          <h2 class="card__title"></h2>
+          <button class="card__like" type="button" aria-label="кнопка лайк"></button>
+        </div>
+      </article>
+    </template>
 
     <script src="./scripts/index.js"></script>
   </div>
