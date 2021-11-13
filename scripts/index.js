@@ -1,13 +1,12 @@
-const popupElement = document.querySelector('.popup');
-const popupOpenProfileInfo = document.querySelector('.profile__btn-edit');
-const popupCloseButtonElement = popupElement.querySelector('.popup__btn-close_type_profile');
 const popupProfile = document.querySelector('.popup_type_profile');
+const popupOpenProfileInfo = document.querySelector('.profile__btn-edit');
+const popupCloseButtonElement = popupProfile.querySelector('.popup__btn-close_type_profile');
 const profileInfo = document.querySelector('.profile__info');
-const submitProfile = popupElement.querySelector('.form_type_profile')
+const submitProfile = popupProfile.querySelector('.form_type_profile')
 const oldProfileName = profileInfo.querySelector('.profile__name');
 const oldProfileActivity = profileInfo.querySelector('.profile__activity');
-const newProfileName = popupElement.querySelector('#newName');
-const newProfileActivity = popupElement.querySelector('#newActivity');
+const newProfileName = popupProfile.querySelector('#newName');
+const newProfileActivity = popupProfile.querySelector('#newActivity');
 const popupOpenAddCard = document.querySelector('.button_type_add');
 const popupCloseAddCard = document.querySelector('.popup__btn-close_type_card');
 const popupCard = document.querySelector('.popup_type_card');
@@ -20,7 +19,6 @@ const popupFullScreen = document.querySelector('.popup_type_fullscreen');
 const fullImageLink = popupFullScreen.querySelector('.popup__photo');
 const fullImageCaption = popupFullScreen.querySelector('.popup__caption');
 const popupCloseFullImage = popupFullScreen.querySelector('.popup__btn-close_type_full-image');
-
 
 const initialCards = [
   {
@@ -48,6 +46,7 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
 
 // Загрузка стандартных карточек
 initialCards.forEach (function (item) {

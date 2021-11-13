@@ -42,9 +42,14 @@
         <button type="button" class="popup__btn-close popup__btn-close_type_profile button" aria-label="кнопка закрытия всплывающего окна"></button>
         <div class="popup__content">
           <h3 class="popup__title">Редактировать профиль</h3>
-          <form class="form form_type_profile" name="form">
-            <input type="text" class="popup__input" name="profilename" id="newName" placeholder="Имя">
-            <input type="text" class="popup__input" name="profileactivity" id="newActivity" placeholder="Деятельность">
+          <form class="form form_type_profile popup__form" name="profile" novalidate>
+
+            <input required minlength="2" maxlength="40" type="text" class="popup__input popup__input_type_name" name="profilename" id="newName" placeholder="Имя">
+            <span class="newName-error popup__input-error"></span>
+
+            <input required type="text" class="popup__input" name="profileactivity" id="newActivity" placeholder="Деятельность">
+            <span class="newActivity-error popup__input-error"></span>
+
             <button type="submit" class="popup__btn-save popup__btn-save_type_profile" aria-label="кнопка сохранения новых данных">Сохранить</button>
           </form>
         </div>
@@ -56,9 +61,14 @@
         <button type="button" class="popup__btn-close popup__btn-close_type_card button" aria-label="кнопка закрытия всплывающего окна"></button>
         <div class="popup__content">
           <h3 class="popup__title">Новое место</h3>
-          <form class="form form_type-card" name="form">
-            <input type="text" class="popup__input" name="placename" id="placename" placeholder="Название">
-            <input type="text" class="popup__input" name="imglink" id="imglink" placeholder="Ссылка на картинку">
+          <form class="form form_type-card popup__form" name="card" novalidate>
+
+            <input required type="text" class="popup__input" name="placename" id="placename" placeholder="Название">
+            <span class="placename-error"></span>
+
+            <input required type="text" class="popup__input" name="imglink" id="imglink" placeholder="Ссылка на картинку">
+            <span class="imglink-error"></span>
+
             <button type="submit" class="popup__btn-save popup__btn-save_type_card" aria-label="кнопка сохранения новой карточки">Создать</button>
           </form>
         </div>
@@ -86,5 +96,6 @@
     </template>
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 </html>
