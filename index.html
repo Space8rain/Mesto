@@ -63,10 +63,10 @@
           <h3 class="popup__title">Новое место</h3>
           <form class="form form_type-card popup__form" name="card" novalidate>
 
-            <input required type="text" class="popup__input" name="placename" id="placename" placeholder="Название">
+            <input required minlength="2" maxlength="40" type="text" class="popup__input" name="placename" id="placename" placeholder="Название">
             <span class="placename-error"></span>
 
-            <input required type="text" class="popup__input" name="imglink" id="imglink" placeholder="Ссылка на картинку">
+            <input required type="url" class="popup__input" name="imglink" id="imglink" placeholder="Ссылка на картинку">
             <span class="imglink-error"></span>
 
             <button type="submit" class="popup__btn-save popup__btn-save_type_card" aria-label="кнопка сохранения новой карточки">Создать</button>
