@@ -102,14 +102,34 @@ function handleFullImage (evt) {
   fullImageLink.src = evt.target.closest('.card__image').src;
   fullImageCaption.textContent = evt.target.closest('.card__image').alt;
   openPopup(popupFullScreen);
-}
+};
 
 // Открытие/закрытие попапов
 function openPopup(popup) {
   popup.classList.add('popup_is-opened');
+  document.addEventListener('keydown', closePopupByEsc);
+  closePopupByClickOverlay(popup);
 };
+
 function closePopup (popup) {
   popup.classList.remove('popup_is-opened');
+};
+
+// Закрытие при нажатии esc
+function closePopupByEsc (evt) {
+  // console.log(evt.key);
+  if (evt.key === 'Escape') {
+    closePopup(document.querySelector('.popup_is-opened'));
+  };
+};
+
+// Закрытие при нажатии на оврелей
+function closePopupByClickOverlay (item) {
+  item.addEventListener ('click', (evt) => {
+    if (evt.target === item) {
+      closePopup(item);
+    };
+  });
 };
 
 // Редактирование профиля
@@ -126,6 +146,7 @@ popupOpenProfileInfo.addEventListener('click', () => {
   newProfileActivity.value = oldProfileActivity.textContent;
   openPopup(popupProfile);
 });
+
 popupCloseButtonElement.addEventListener('click', () => {closePopup(popupProfile)});
 submitProfile.addEventListener('submit', editProfile);
 
@@ -134,7 +155,9 @@ popupOpenAddCard.addEventListener('click', () => {
   inputCardName.value = '';
   openPopup(popupCard)
 });
+
 popupCloseAddCard.addEventListener('click', () => {closePopup(popupCard)});
 submitCard.addEventListener('submit', addCard);
 
 popupCloseFullImage.addEventListener('click', () => {closePopup(popupFullScreen)});
+
