@@ -1,6 +1,5 @@
 const popupProfile = document.querySelector('.popup_type_profile');
 const popupOpenProfileInfo = document.querySelector('.profile__btn-edit');
-const popupCloseButtonElement = popupProfile.querySelector('.popup__btn-close_type_profile');
 const profileInfo = document.querySelector('.profile__info');
 const submitProfile = popupProfile.querySelector('.form_type_profile')
 const oldProfileName = profileInfo.querySelector('.profile__name');
@@ -8,7 +7,6 @@ const oldProfileActivity = profileInfo.querySelector('.profile__activity');
 const newProfileName = popupProfile.querySelector('#newName');
 const newProfileActivity = popupProfile.querySelector('#newActivity');
 const popupOpenAddCard = document.querySelector('.button_type_add');
-const popupCloseAddCard = document.querySelector('.popup__btn-close_type_card');
 const popupCard = document.querySelector('.popup_type_card');
 const cardsColumns = document.querySelector('.cards');
 const inputCardLink = popupCard.querySelector('#imglink');
@@ -18,7 +16,6 @@ const submitCard = popupCard.querySelector('.form_type-card');
 const popupFullScreen = document.querySelector('.popup_type_fullscreen');
 const fullImageLink = popupFullScreen.querySelector('.popup__photo');
 const fullImageCaption = popupFullScreen.querySelector('.popup__caption');
-const popupCloseFullImage = popupFullScreen.querySelector('.popup__btn-close_type_full-image');
 
 const initialCards = [
   {
@@ -100,6 +97,7 @@ function handleDelete (evt) {
 function handleFullImage (evt) {
 
   fullImageLink.src = evt.target.closest('.card__image').src;
+  fullImageLink.alt = evt.target.closest('.card__image').alt;
   fullImageCaption.textContent = evt.target.closest('.card__image').alt;
   openPopup(popupFullScreen);
 };
@@ -113,24 +111,31 @@ function openPopup(popup) {
 
 function closePopup (popup) {
   popup.classList.remove('popup_is-opened');
+  document.removeEventListener('keydown', closePopupByEsc);
 };
 
 // Закрытие при нажатии esc
 function closePopupByEsc (evt) {
-  // console.log(evt.key);
   if (evt.key === 'Escape') {
     closePopup(document.querySelector('.popup_is-opened'));
   };
 };
 
-// Закрытие при нажатии на оврелей
-function closePopupByClickOverlay (item) {
-  item.addEventListener ('click', (evt) => {
-    if (evt.target === item) {
-      closePopup(item);
-    };
+function closePopupByClickOverlay () {
+  const popups = document.querySelectorAll('.popup')
+
+  popups.forEach((popup) => {
+      popup.addEventListener('click', (evt) => {
+          if (evt.target.classList.contains('popup_is-opened')) {
+              closePopup(popup)
+          };
+          if (evt.target.classList.contains('popup__btn-close')) {
+            closePopup(popup)
+          };
+      });
   });
 };
+
 
 // Редактирование профиля
 function editProfile (evt) {
@@ -147,17 +152,20 @@ popupOpenProfileInfo.addEventListener('click', () => {
   openPopup(popupProfile);
 });
 
-popupCloseButtonElement.addEventListener('click', () => {closePopup(popupProfile)});
 submitProfile.addEventListener('submit', editProfile);
 
 popupOpenAddCard.addEventListener('click', () => {
+
+  const buttonElement = popupCard.querySelector('.popup__btn-save_type_card')
+
+  buttonElement.disabled = true;
+  buttonElement.classList.add('popup__btn_disable');
   inputCardLink.value = '';
   inputCardName.value = '';
+
   openPopup(popupCard)
 });
 
-popupCloseAddCard.addEventListener('click', () => {closePopup(popupCard)});
 submitCard.addEventListener('submit', addCard);
 
-popupCloseFullImage.addEventListener('click', () => {closePopup(popupFullScreen)});
 
