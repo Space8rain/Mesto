@@ -106,12 +106,13 @@ function handleFullImage (evt) {
 function openPopup(popup) {
   popup.classList.add('popup_is-opened');
   document.addEventListener('keydown', closePopupByEsc);
-  closePopupByClickOverlay(popup);
+  document.addEventListener('click', closePopupByClickOverlay(popup));
 };
 
 function closePopup (popup) {
   popup.classList.remove('popup_is-opened');
   document.removeEventListener('keydown', closePopupByEsc);
+  document.removeEventListener('click', closePopupByClickOverlay(popup));
 };
 
 // Закрытие при нажатии esc
