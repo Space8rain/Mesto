@@ -11,7 +11,7 @@ const popupCard = document.querySelector('.popup_type_card');
 const cardsColumns = document.querySelector('.cards');
 const inputCardLink = popupCard.querySelector('#imglink');
 const inputCardName = popupCard.querySelector('#placename');
-const itemTemplate = document.querySelector('#user-card');
+// const itemTemplate = document.querySelector('#user-card-template');
 const submitCard = popupCard.querySelector('.form_type-card');
 const popupFullScreen = document.querySelector('.popup_type_fullscreen');
 const fullImageLink = popupFullScreen.querySelector('.popup__photo');
@@ -52,18 +52,18 @@ initialCards.forEach (function (item) {
 });
 
 // Отрисовка каждой карточки
-function renderCard (item) {
-  const cardElement = itemTemplate.content.cloneNode(true);
+// function renderCard (item) {
+//   const cardElement = itemTemplate.content.cloneNode(true);
 
 
-  cardElement.querySelector('.card__image').src = item.link;
-  cardElement.querySelector('.card__image').alt = item.name;
-  cardElement.querySelector('.card__title').textContent = item.name;
+//   cardElement.querySelector('.card__image').src = item.link;
+//   cardElement.querySelector('.card__image').alt = item.name;
+//   cardElement.querySelector('.card__title').textContent = item.name;
 
-  setListeners(cardElement);
+//   setListeners(cardElement);
 
-  return cardElement;
-};
+//   return cardElement;
+// };
 
 // Добавление пользовательских карточек
 function addCard (evt) {
