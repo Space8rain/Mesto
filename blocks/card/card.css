@@ -1,8 +1,11 @@
 .card {
   position: relative;
-  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border-radius: 10px;
   overflow: hidden;
   font-size: 0;
   background-color: #FFF;
+  width: 282px;
 }

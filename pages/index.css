@@ -59,3 +59,4 @@
 @import url(../blocks/popup/__photo/popup__photo.css);
 @import url(../blocks/popup/__btn/_disable/popup__btn_disable.css);
 @import url(../blocks/popup/__error/_visible/popup__error_visible.css);
+@import url(../blocks/popup/__input-container/popup__input-container.css);

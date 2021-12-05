@@ -16,17 +16,23 @@ const popupCard = document.querySelector('.popup_type_card');
 const inputCardLink = popupCard.querySelector('#imglink');
 const inputCardName = popupCard.querySelector('#placename');
 const submitCard = document.querySelector('.form_type-card');
+const templateCard = document.querySelector('#user-card-template');
+
+// Валидация
+const validateProfile = new FormValidator(forms, formPopupProfile);
+validateProfile.enableValidation();
+const validateCard = new FormValidator(forms, submitCard);
+validateCard.enableValidation();
 
 // Загрузка стандартных карточек
 initialCards.forEach((data) => {
-  const card = new Card(data);
-  const cardElement = card.generateCard();
+  const cardElement = renderCard(data);
   cardsColumns.append(cardElement)
 });
 
 // Отрисовка каждой карточки
 function renderCard (item) {
-  const card = new Card(item);
+  const card = new Card(item, templateCard);
   const cardElement = card.generateCard();
   return cardElement;
 };
@@ -63,14 +69,9 @@ submitProfile.addEventListener('submit', editProfile);
 
 // Открыть форму для новой карточки
 popupOpenAddCard.addEventListener('click', () => {
-
-  const buttonElement = popupCard.querySelector('.popup__btn-save_type_card')
-
-  buttonElement.disabled = true;
-  buttonElement.classList.add('popup__btn_disable');
   inputCardLink.value = '';
   inputCardName.value = '';
-
+  validateCard.resetErrors();
   openPopup(popupCard)
 });
 
@@ -79,9 +80,3 @@ closePopupByClickOverlay();
 
 // Сохранить новую карточку
 submitCard.addEventListener('submit', addCard);
-
-// Валидация
-const validateProfile = new FormValidator(forms, formPopupProfile);
-validateProfile.enableValidation();
-const validateCard = new FormValidator(forms, submitCard);
-validateCard.enableValidation()

@@ -5,6 +5,9 @@
   font-size: 12px;
   line-height: 15px;
   color: red;
-  padding-top: 5px;
+  /* padding-top: 5px; */
   margin: 0;
+  position: absolute;
+  left: 0;
+  top: calc(100% + 5px);
 }

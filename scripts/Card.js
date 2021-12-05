@@ -1,8 +1,7 @@
-import {popupFullScreen, fullImageLink, fullImageCaption, inputCardLink, inputCardName, popupCard, cardsColumns} from './Utils.js'
+import {popupFullScreen, fullImageLink, fullImageCaption} from './Utils.js'
 import {openPopup} from './Utils.js'
 
 export class Card {
-  static _itemTemplate = document.querySelector('#user-card-template');
 
   constructor(data, templateSelector) {
     this._link = data.link;
@@ -12,11 +11,9 @@ export class Card {
 
   // Выбор трафарета
   _getTemplate() {
-  this._templateSelector = document.querySelector('#user-card-template').content.cloneNode(true);
-  const _templateElement = this._templateSelector;
-
-  return _templateElement
+    return this._templateElement = this._templateSelector.content.querySelector('.card').cloneNode(true);
 }
+
   // Наполнение карточки
   generateCard() {
     this._element = this._getTemplate();
@@ -25,14 +22,14 @@ export class Card {
     this._element.querySelector('.card__image').alt = this._name;
     this._element.querySelector('.card__title').textContent = this._name;
 
-    this._setListeners(this._element);
+    this._setListeners();
 
     return this._element;
   }
 
   // Удаление карточки
-  _handleDeleteCard (evt) {
-    evt.target.closest('.card').remove();
+  _handleDeleteCard = () => {
+    this._element.remove();
   }
 
   // Лайк карточки
@@ -50,10 +47,10 @@ export class Card {
   }
 
   // Слушатели событий
-  _setListeners (card) {
-    card.querySelector('.card__like').addEventListener('click', this._handleLikeCard);
-    card.querySelector('.card__delete').addEventListener('click', this._handleDeleteCard);
-    card.querySelector('.card__image').addEventListener('click', this._handleFullImage);
+  _setListeners () {
+    this._element.querySelector('.card__like').addEventListener('click', this._handleLikeCard);
+    this._element.querySelector('.card__delete').addEventListener('click', this._handleDeleteCard);
+    this._element.querySelector('.card__image').addEventListener('click', this._handleFullImage);
   }
 }
 
