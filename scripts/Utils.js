@@ -65,13 +65,10 @@ export function closePopupByClickOverlay () {
   const popups = document.querySelectorAll('.popup')
 
   popups.forEach((popup) => {
-      popup.addEventListener('click', (evt) => {
-          if (evt.target.classList.contains('popup_is-opened')) {
-              closePopup(popup)
-          };
-          if (evt.target.classList.contains('popup__btn-close')) {
-            closePopup(popup)
-          };
-      });
+    popup.addEventListener('click', (evt) => {
+      if (evt.target.classList.contains('popup_is-opened') || evt.target.classList.contains('popup__btn-close')) {
+        closePopup(popup)
+      }
+    });
   });
 };
