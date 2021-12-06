@@ -1,5 +1,5 @@
-import {popupFullScreen, fullImageLink, fullImageCaption} from './UTILS.js'
-import {openPopup} from './UTILS.js'
+import {popupFullScreen, fullImageLink, fullImageCaption} from './utils.js'
+import {openPopup} from './utils.js'
 
 export class Card {
 
