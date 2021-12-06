@@ -9,8 +9,6 @@ export class Card {
     this._templateSelector = templateSelector;
   }
 
-
-
   // Выбор трафарета
   _getTemplate() {
     return this._templateElement = document.getElementById(this._templateSelector).content.querySelector('.card').cloneNode(true);
