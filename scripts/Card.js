@@ -1,5 +1,5 @@
-import {popupFullScreen, fullImageLink, fullImageCaption} from './Utils.js'
-import {openPopup} from './Utils.js'
+import {popupFullScreen, fullImageLink, fullImageCaption} from './utils.js'
+import {openPopup} from './utils.js'
 
 export class Card {
 
@@ -9,9 +9,11 @@ export class Card {
     this._templateSelector = templateSelector;
   }
 
+
+
   // Выбор трафарета
   _getTemplate() {
-    return this._templateElement = this._templateSelector.content.querySelector('.card').cloneNode(true);
+    return this._templateElement = document.getElementById(this._templateSelector).content.querySelector('.card').cloneNode(true);
 }
 
   // Наполнение карточки

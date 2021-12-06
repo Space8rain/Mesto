@@ -1,6 +1,6 @@
 import {Card} from './Card.js';
 import {FormValidator} from './FormValidator.js';
-import {initialCards, cardsColumns, openPopup, closePopup, closePopupByClickOverlay, forms} from './Utils.js'
+import {initialCards, cardsColumns, openPopup, closePopup, closePopupByClickOverlay, forms} from './utils.js'
 
 const popupProfile = document.querySelector('.popup_type_profile');
 const formPopupProfile = popupProfile.querySelector('.form');
@@ -16,7 +16,7 @@ const popupCard = document.querySelector('.popup_type_card');
 const inputCardLink = popupCard.querySelector('#imglink');
 const inputCardName = popupCard.querySelector('#placename');
 const submitCard = document.querySelector('.form_type-card');
-const templateCard = document.querySelector('#user-card-template');
+const templateSelector = 'user-card-template';
 
 // Валидация
 const validateProfile = new FormValidator(forms, formPopupProfile);
@@ -32,7 +32,7 @@ initialCards.forEach((data) => {
 
 // Отрисовка каждой карточки
 function renderCard (item) {
-  const card = new Card(item, templateCard);
+  const card = new Card(item, templateSelector);
   const cardElement = card.generateCard();
   return cardElement;
 };
