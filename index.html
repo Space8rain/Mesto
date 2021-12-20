@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
+  <link rel="stylesheet" href="./src/pages/index.css">
   <title>Mesto</title>
 </head>
 
@@ -12,7 +12,7 @@
   <div class="page">
 
     <header class="header">
-      <img class="header__logo" src="./images/header_logo.png" alt="лого Mesto Russia">
+      <img class="header__logo" src="./src/images/header_logo.png" alt="лого Mesto Russia">
     </header>
 
     <main>
@@ -68,12 +68,12 @@
           <form class="form form_type-card popup__form" name="card" novalidate>
 
             <div class="popup__input-container">
-              <input required minlength="2" maxlength="30" type="text" class="popup__input" name="placename" id="placename" placeholder="Название">
+              <input required minlength="2" maxlength="30" type="text" class="popup__input" name="name" id="placename" placeholder="Название">
               <span class="placename-error"></span>
             </div>
 
             <div class="popup__input-container">
-              <input required type="url" class="popup__input" name="imglink" id="imglink" placeholder="Ссылка на картинку">
+              <input required type="url" class="popup__input" name="link" id="imglink" placeholder="Ссылка на картинку">
               <span class="imglink-error"></span>
             </div>
 
@@ -104,6 +104,6 @@
       </article>
     </template>
 
-    <script type="module" src="./scripts/index.js"></script>
+    <script type="module" src="./src/pages/index.js"></script>
 </body>
 </html>
