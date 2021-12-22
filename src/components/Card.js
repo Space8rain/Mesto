@@ -15,12 +15,13 @@ export default class Card {
   // Наполнение карточки
   generateCard() {
     this._element = this._getTemplate();
+    this._cardImage = this._element.querySelector('.card__image');
 
-    this._element.querySelector('.card__image').src = this._link;
-    this._element.querySelector('.card__image').alt = this._name;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
     this._element.querySelector('.card__title').textContent = this._name;
 
-    this._setListeners();
+    this._setEventListeners();
 
     return this._element;
   }
@@ -36,10 +37,9 @@ export default class Card {
   }
 
   // Слушатели событий
-  _setListeners () {
+  _setEventListeners () {
     this._element.querySelector('.card__like').addEventListener('click', this._handleLikeCard);
     this._element.querySelector('.card__delete').addEventListener('click', this._handleDeleteCard);
-    this._element.querySelector('.card__image').addEventListener('click', this._handleCardClick);
+    this._cardImage.addEventListener('click', this._handleCardClick);
   }
 }
-

@@ -13,8 +13,8 @@ export default class UserInfo {
   }
 
   // Новые данные пользователя
-  setUserInfo({profilename, profileactivity}) {
-    this._name.textContent = profilename;
-    this._info.textContent = profileactivity
+  setUserInfo({profileName, profileActivity}) {
+    this._name.textContent = profileName;
+    this._info.textContent = profileActivity
   }
 }

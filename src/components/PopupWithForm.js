@@ -3,8 +3,8 @@ import Popup from "./Popup.js";
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, submitForm) {
     super(popupSelector);
-    this._popupForm = this._popupSelector.querySelector('.form');
-    this.submitForm = submitForm;
+    this._popupForm = this._popup.querySelector('.form');
+    this._submitForm = submitForm;
   }
 
   // Сбор данных полей форм
@@ -17,12 +17,12 @@ export default class PopupWithForm extends Popup {
   }
 
   setEventListeners() {
+    super.setEventListeners();
     this._popupForm.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      this.submitForm(this._getInputValues());
+      this._submitForm(this._getInputValues());
       this.close();
     });
-
   }
 
   close() {

@@ -49,6 +49,7 @@ defaultCards.renderItems()
 
 // Попап фулл картинки
 const popupWithImage = new PopupWithImage(popupFullImageSelector);
+popupWithImage.setEventListeners();
 
 // Попап добавления карточки
 const popupCardForm = new PopupWithForm(popupNewCardSelector, (item) => {
