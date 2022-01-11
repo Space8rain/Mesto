@@ -1,9 +1,14 @@
 export default class Card {
 
-  constructor(data, handleCardClick, templateSelector) {
+  constructor({data, handlers}, templateSelector, userId) {
     this._link = data.link;
     this._name = data.name;
-    this._handleCardClick = handleCardClick;
+    this._handleCardClick = handlers.handleCardClick;
+    this._handleCardDelete = handlers.handleCardDelete;
+    this._handleCardLike = handlers.handleCardLike;
+    this._userId = userId;
+    this._cardId = data._id;
+    this._ownerId = data.owner._Id;
     this._templateSelector = templateSelector;
   }
 
@@ -26,8 +31,15 @@ export default class Card {
     return this._element;
   }
 
+  // Скрытие значка удаления на чужих карточках
+  _iconCardDelete() {
+    if (this._userId !== this._ownerId) {
+      this._element.querySelector('.card__delete').style.display = 'none'
+    }
+  }
+
   // Удаление карточки
-  _handleDeleteCard = () => {
+  deleteCard = () => {
     this._element.remove();
   }
 
@@ -39,7 +51,7 @@ export default class Card {
   // Слушатели событий
   _setEventListeners () {
     this._element.querySelector('.card__like').addEventListener('click', this._handleLikeCard);
-    this._element.querySelector('.card__delete').addEventListener('click', this._handleDeleteCard);
+    this._element.querySelector('.card__delete').addEventListener('click', this._handleCardDelete);
     this._cardImage.addEventListener('click', this._handleCardClick);
   }
 }

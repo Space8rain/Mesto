@@ -54,3 +54,4 @@ export const popupFullImageSelector = '.popup_type_fullscreen';
 export const popupProfileSelector = '.popup_type_profile';
 export const profileNameSelector = '.profile__name';
 export const profileActivitySelector = '.profile__activity';
+export const popupDeleteSelector = '.popup_type_card-delete'

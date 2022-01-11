@@ -3,10 +3,10 @@ import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithSubmit from '../components/PopupWithSubmit';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import {
-  initialCards,
   forms,
   formPopupProfile,
   popupOpenProfileInfo,
@@ -19,9 +19,12 @@ import {
   profileActivitySelector,
   popupProfileSelector,
   popupNewCardSelector,
-  popupOpenAddCard
-
+  popupOpenAddCard,
+  popupDeleteSelector
 } from '../utils/constants.js';
+import Api from '../components/Api';
+
+let userId;
 
 // Валидация
 const validateProfile = new FormValidator(forms, formPopupProfile);
@@ -29,23 +32,82 @@ validateProfile.enableValidation();
 const validateCard = new FormValidator(forms, formPopupCard);
 validateCard.enableValidation();
 
-// Отрисовка каждой карточки
-function renderCard (data, templateSelector) {
-  const card = new Card(data, () => {
-    popupWithImage.open(data);
-  }, templateSelector);
-  return card.generateCard();
-};
+const api = new Api({
+  url: 'https://mesto.nomoreparties.co/cohort-33/',
+  headers: {
+    authorization: 'bd428fae-42b0-4e58-99f1-8231c317d8e5',
+    "content-type": "application/json"
+  }
+})
+
+const cardsData = api.getInitialCards();
 
 // Загрузка стандартных карточек
 const defaultCards = new Section({
-  items: initialCards,
   renderer: (item) => {
-    const card = renderCard(item, templateSelector)
+    const card = renderCard(item, templateSelector, userId)
     defaultCards.addItem(card)
   }
 }, '.cards');
-defaultCards.renderItems()
+
+
+// api.getInitialCards()
+//   .then((data) => {
+//     const defaultCards = new Section({
+//       items: data,
+//       renderer: (item) => {
+//         const card = renderCard(item, templateSelector, userId)
+//         defaultCards.addItem(card)
+//       }
+//     }, '.cards');
+//     defaultCards.renderItems()
+//   })
+//   .catch((err) => {
+//       console.log(err)
+//   });
+
+Promise.all([cardsData])
+  .then((res) => {
+    cardsData
+      .then((data) => {
+        defaultCards.renderItems(data);
+        return defaultCards
+      })
+      .catch((err) => {
+        console.log(err)
+      });
+  })
+
+// Отрисовка каждой карточки
+function renderCard (data, templateSelector) {
+  const card = new Card({
+    data,
+    handlers: {
+      handleCardClick: () => {
+        popupWithImage.open(data)
+      },
+
+      handleCardDelete: () => {
+        popupDeleteSubmit.open();
+        popupDeleteSubmit.submit(() => {
+          api.deleteUserCard(data._id)
+            .then(() => {
+              card.deleteCard();
+              popupDeleteSubmit.close()
+            })
+            .catch((err) => {
+              console.log(err)
+          });
+        })
+      }
+    }
+  }, templateSelector, userId);
+  return card.generateCard();
+};
+
+// Попап удаления карточки
+const popupDeleteSubmit = new PopupWithSubmit(popupDeleteSelector);
+popupDeleteSubmit.setEventListeners();
 
 // Попап фулл картинки
 const popupWithImage = new PopupWithImage(popupFullImageSelector);
@@ -53,8 +115,17 @@ popupWithImage.setEventListeners();
 
 // Попап добавления карточки
 const popupCardForm = new PopupWithForm(popupNewCardSelector, (item) => {
-  const card = renderCard(item, templateSelector);
-  defaultCards.addItem(card);
+  api.addUserCard(item.name, item.link)
+      .then((item) => {
+        const card = renderCard(item, templateSelector);
+        defaultCards.addItem(card);
+        popupCardForm.close()
+      })
+      .catch((err) => {
+        console.log(err)
+      });
+  // const card = renderCard(item, templateSelector);
+  // defaultCards.addItem(card);
 });
 
 // Открытие попапа добавления карточки
