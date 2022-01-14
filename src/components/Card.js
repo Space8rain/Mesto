@@ -24,13 +24,16 @@ export default class Card {
     this._element = this._getTemplate();
     this._cardImage = this._element.querySelector('.card__image');
     this._buttonLike = this._element.querySelector('.card__like');
+    this._buttonDelete = this._element.querySelector('.card__delete');
+    this._likeCount = this._element.querySelector('.card__like-count');
+
 
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._element.querySelector('.card__title').textContent = this._name;
     this._iconCardDelete();
     this._checkLikes();
-    this._element.querySelector('.card__like-count').textContent = this._likeCounter;
+    this._likeCount.textContent = this._likeCounter;
     this._setEventListeners();
 
     return this._element;
@@ -39,7 +42,7 @@ export default class Card {
   // Скрытие значка удаления на чужих карточках
   _iconCardDelete() {
     if (this._userId !== this._ownerId) {
-      this._element.querySelector('.card__delete').style.display = 'none'
+      this._buttonDelete.style.display = 'none'
     }
   }
 
@@ -70,7 +73,7 @@ export default class Card {
 
   updateLikes(likeCounter) {
     this._handleLikeCard();
-    this._element.querySelector('.card__like-count').textContent = likeCounter;
+    this._likeCount.textContent = likeCounter;
   }
 
   // Слушатели событий
@@ -78,7 +81,7 @@ export default class Card {
     this._buttonLike.addEventListener('click', this._handleCardLike);
     this._cardImage.addEventListener('click', this._handleCardClick);
     if (this._userId === this._ownerId) {
-      this._element.querySelector('.card__delete').addEventListener('click', this._handleCardDelete);
+      this._buttonDelete.addEventListener('click', this._handleCardDelete);
     }
   }
 }

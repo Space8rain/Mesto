@@ -38,33 +38,25 @@ const api = new Api({
   }
 })
 
-const cardsData = api.getInitialCards();
-const userData = api.getProfile();
+// Получив от сервера все ответы заполняем профиль и карточки
+api.getApiInfo()
+  .then(([cardsData, userData]) => {
 
-Promise.all([cardsData, userData])
-  .then((res) => {
-    userId = res[1]._id;
+    userId = userData._id
 
-    userData
-      .then((res) => {
-        userInfo.setUserInfo({
-          profileName: res.name,
-          profileActivity: res.about,
-          avatar: res.avatar})
-      })
-      .catch((err) => {
-        console.log(err)
-      });
+    userInfo.setUserInfo({
+      profileName: userData.name,
+      profileActivity: userData.about,
+      avatar: userData.avatar
+    })
 
-    cardsData
-      .then((data) => {
-        defaultCards.renderItems(data);
-        return defaultCards
-      })
-      .catch((err) => {
-        console.log(err)
-      });
+    defaultCards.renderItems(cardsData)
+    return defaultCards
   })
+
+  .catch((err) => {
+    console.log(err)
+})
 
 // Загрузка стандартных карточек
 const defaultCards = new Section({

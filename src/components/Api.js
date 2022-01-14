@@ -4,8 +4,8 @@ export default class Api {
     this._headers = options.headers
   }
 
-  // Проверка с сервером
-  _errorHandler = (res) => {
+  // Проверка ответа от сервера
+  _checkResponse = (res) => {
     if (res.ok) {
       return res.json()
     }
@@ -17,7 +17,7 @@ export default class Api {
     return fetch (`${this._url}cards`, {
       headers: this._headers
     })
-    .then(this._errorHandler)
+    .then(this._checkResponse)
   }
 
   // Добавить/отправить карточку пользователя на сервер
@@ -30,7 +30,7 @@ export default class Api {
         link: link
       })
     })
-    .then(this._errorHandler)
+    .then(this._checkResponse)
   }
 
   // Удаление карточки с сервера
@@ -39,7 +39,7 @@ export default class Api {
       method: 'DELETE',
       headers: this._headers,
     })
-    .then(this._errorHandler)
+    .then(this._checkResponse)
   }
 
   // Добавление лайка на сервере
@@ -48,7 +48,7 @@ export default class Api {
       method: 'PUT',
       headers: this._headers,
     })
-    .then(this._errorHandler)
+    .then(this._checkResponse)
   }
 
   // Удаление лайка на сервере
@@ -57,7 +57,7 @@ export default class Api {
       method: 'DELETE',
       headers: this._headers,
     })
-    .then(this._errorHandler)
+    .then(this._checkResponse)
   }
 
   // Получить данные профиля
@@ -65,7 +65,7 @@ export default class Api {
     return fetch (`${this._url}users/me`, {
       headers: this._headers
     })
-    .then(this._errorHandler)
+    .then(this._checkResponse)
   }
 
   // Заменить аватар
@@ -77,7 +77,7 @@ export default class Api {
         avatar: avatar
       })
     })
-    .then(this._errorHandler)
+    .then(this._checkResponse)
   }
 
   // Отправить данные профиля
@@ -90,7 +90,12 @@ export default class Api {
         about: about
       })
     })
-    .then(this._errorHandler)
+    .then(this._checkResponse)
+  }
+
+  // Получение всех данных от сервера
+  getApiInfo() {
+    return Promise.all([this.getInitialCards(), this.getProfile()])
   }
 }
 
