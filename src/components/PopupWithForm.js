@@ -4,6 +4,7 @@ export default class PopupWithForm extends Popup {
   constructor(popupSelector, submitForm) {
     super(popupSelector);
     this._popupForm = this._popup.querySelector('.form');
+    this._submitBtn = this._popup.querySelector('.popup__btn-save')
     this._submitForm = submitForm;
   }
 
@@ -21,8 +22,16 @@ export default class PopupWithForm extends Popup {
     this._popupForm.addEventListener('submit', (evt) => {
       evt.preventDefault();
       this._submitForm(this._getInputValues());
-      this.close();
     });
+  }
+
+  // Меняем текст у кнопки сабмита на время загрузки
+  showLoading(isLoad) {
+    if (isLoad) {
+      this._submitBtn.textContent = 'Сохранение...'
+    } else {
+      this._submitBtn.textContent = 'Сохранить'
+    }
   }
 
   close() {

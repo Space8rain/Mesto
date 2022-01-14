@@ -1,7 +1,7 @@
 .popup__btn-save {
   border-radius: 2px;
   border: none;
-  margin: 48px 0 37px;
+  margin: 0 0 37px;
   background-color: #000;
   color: #FFF;
   font-family: 'Inter', 'Arial', 'sans-serif';
@@ -12,6 +12,7 @@
   text-align: center;
   height: 50px;
   transition: .4s;
+  width: 100%;
 }
 
 .popup__btn-save:hover {
@@ -21,7 +22,7 @@
 
 @media (max-width: 767px) {
   .popup__btn-save {
-    margin: 45px 0 25px;
+    margin: 0 0 25px;
     font-size: 14px;
     line-height: 17px;
   }

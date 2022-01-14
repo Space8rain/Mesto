@@ -42,10 +42,53 @@ export default class Api {
     .then(this._errorHandler)
   }
 
+  // Добавление лайка на сервере
+  addLike(id) {
+    return fetch (`${this._url}cards/${id}/likes`, {
+      method: 'PUT',
+      headers: this._headers,
+    })
+    .then(this._errorHandler)
+  }
+
+  // Удаление лайка на сервере
+  removeLike(id) {
+    return fetch (`${this._url}cards/${id}/likes`, {
+      method: 'DELETE',
+      headers: this._headers,
+    })
+    .then(this._errorHandler)
+  }
+
   // Получить данные профиля
   getProfile() {
     return fetch (`${this._url}users/me`, {
       headers: this._headers
+    })
+    .then(this._errorHandler)
+  }
+
+  // Заменить аватар
+  changeAvatar(avatar) {
+    return fetch (`${this._url}users/me/avatar`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: avatar
+      })
+    })
+    .then(this._errorHandler)
+  }
+
+  // Отправить данные профиля
+  editProfile(name, about) {
+    return fetch (`${this._url}users/me`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: name,
+        about: about
+      })
     })
     .then(this._errorHandler)
   }
